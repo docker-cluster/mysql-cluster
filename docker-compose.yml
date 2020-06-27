@@ -15,7 +15,7 @@ services:
       - ./master/data:/var/lib/mysql
     restart: always
     networks:
-      - mysql-cluster
+      - overlay
   mysql-slave:
     container_name: "mysql-slave"
     build:
@@ -33,7 +33,7 @@ services:
       - ./slave/data:/var/lib/mysql
     restart: always
     networks:
-      - mysql-cluster
+      - overlay
       
 networks:
-  mysql-cluster:
+  overlay:
