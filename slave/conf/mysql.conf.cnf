@@ -1,6 +1,4 @@
 [mysqld]
-skip-host-cache
-skip-name-resolve
 server_id=21
 binlog_do_db = demo_db
 log_bin=mysql-bin
