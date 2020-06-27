@@ -11,6 +11,8 @@ services:
       - "MYSQL_DATABASE=demo_db"
     ports:
       - "33306:3306"
+    volumes:
+      - ./master/data:/var/lib/mysql
     restart: always
     networks:
       - mysql-cluster
@@ -27,6 +29,8 @@ services:
       - mysql-master
     ports:
       - "33307:3306"
+    volumes:
+      - ./slave/data:/var/lib/mysql
     restart: always
     networks:
       - mysql-cluster
