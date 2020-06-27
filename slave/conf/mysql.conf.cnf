@@ -1,6 +1,7 @@
 [mysqld]
 server_id=21
 binlog_do_db = demo_db
+log-error=/var/log/mysql/mysql.err
 log_bin=/var/log/mysql/mysql-bin.log
 binlog_cache_size=1M
 binlog_format=mixed
