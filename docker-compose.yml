@@ -1,0 +1,35 @@
+version: '3'
+services:
+  mysql-master:
+    container_name: "mysql-master"
+    build:
+      context: ./
+      dockerfile: master/Dockerfile
+    environment:
+      - "MYSQL_LOWER_CASE_TABLE_NAMES=0"
+      - "MYSQL_ROOT_PASSWORD=123456"
+      - "MYSQL_DATABASE=demo_db"
+    ports:
+      - "33306:3306"
+    restart: always
+    networks:
+      - mysql-cluster
+  mysql-slave:
+    container_name: "mysql-slave"
+    build:
+      context: ./
+      dockerfile: slave/Dockerfile
+    environment:
+      - "MYSQL_LOWER_CASE_TABLE_NAMES=0"
+      - "MYSQL_ROOT_PASSWORD=123456"
+      - "MYSQL_DATABASE=demo_db"
+    depends_on:
+      - mysql-master
+    ports:
+      - "33307:3306"
+    restart: always
+    networks:
+      - mysql-cluster
+      
+networks:
+  mysql-cluster:
