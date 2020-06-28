@@ -10,7 +10,7 @@ services:
     ports:
       - "33306:3306"
     volumes:
-      - ./master/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./master/conf/mysql.conf.cnf:/etc/mysql/conf.d/docker.cnf
       - ./master/data:/var/lib/mysql
     restart: always
     networks:
@@ -27,7 +27,7 @@ services:
     ports:
       - "33307:3306"
     volumes:
-      - ./slave/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./slave/conf/mysql.conf.cnf:/etc/mysql/conf.d/docker.cnf
       - ./slave/data:/var/lib/mysql
     restart: always
     networks:
