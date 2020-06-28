@@ -1,8 +1,6 @@
 [mysqld]
-character-set-server=utf8mb4
-collation-server=utf8mb4_general_ci
-server-id=11
+server_id=11
 log-bin=mysql-bin
-binlog-cache-size=1M
-binlog-format=mixed
-expire-logs-days=7
+binlog_cache_size=1M
+binlog_format=mixed
+expire_logs_days=7
