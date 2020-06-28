@@ -6,7 +6,6 @@ services:
     environment:
       - MYSQL_LOWER_CASE_TABLE_NAMES=0
       - MYSQL_ROOT_PASSWORD=123456
-      - MYSQL_DATABASE=demo_db
       - TZ=Asia/Shanghai
     ports:
       - "33306:3306"
@@ -25,7 +24,6 @@ services:
     environment:
       - MYSQL_LOWER_CASE_TABLE_NAMES=0
       - MYSQL_ROOT_PASSWORD=123456
-      - MYSQL_DATABASE=demo_db
       - TZ=Asia/Shanghai
     depends_on:
       - mysql-master
