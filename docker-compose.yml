@@ -1,17 +1,20 @@
 version: '3'
 services:
   mysql-master:
-    container_name: "mysql-master"
+    container_name: mysql-master
     image: mysql:5.7
     environment:
-      - "MYSQL_LOWER_CASE_TABLE_NAMES=0"
-      - "MYSQL_ROOT_PASSWORD=123456"
-      - "MYSQL_DATABASE=demo_db"
+      - MYSQL_LOWER_CASE_TABLE_NAMES=0
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=demo_db
+      - TZ=Asia/Shanghai
     ports:
       - "33306:3306"
     volumes:
       - ./master/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
       - ./master/data:/var/lib/mysql
+      - ./localtime:/etc/localtime
+      - ./timezone:/etc/timezone
     restart: always
     networks:
       - overlay
@@ -19,9 +22,10 @@ services:
     container_name: "mysql-slave"
     image: mysql:5.7
     environment:
-      - "MYSQL_LOWER_CASE_TABLE_NAMES=0"
-      - "MYSQL_ROOT_PASSWORD=123456"
-      - "MYSQL_DATABASE=demo_db"
+      - MYSQL_LOWER_CASE_TABLE_NAMES=0
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=demo_db
+      - TZ=Asia/Shanghai
     depends_on:
       - mysql-master
     ports:
@@ -29,6 +33,8 @@ services:
     volumes:
       - ./slave/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
       - ./slave/data:/var/lib/mysql
+      - ./localtime:/etc/localtime
+      - ./timezone:/etc/timezone
     restart: always
     networks:
       - overlay
