@@ -19,5 +19,4 @@ services:
       - ./data:/var/lib/mysql
 networks:
   overlay:
-    name: overlay
     external: true
