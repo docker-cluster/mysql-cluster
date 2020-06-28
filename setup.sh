@@ -2,6 +2,7 @@ slave_user="slave"
 slave_password="slavepass"
 root_password="123456"
 master_container="mysql-master"
+docker network create mysql-cluster
 docker-compose -f master/master.yml up -d
 until docker exec mysql-master sh -c 'mysql -uroot -p '$root_password' -e ";"'
   do
