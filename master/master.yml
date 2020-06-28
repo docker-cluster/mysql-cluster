@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  mysql-master:
+    container_name: mysql-master
+    image: mysql:5.7
+    restart: always
+    networks:
+      - overlay
+    ports:
+      - "33306:3306"
+    volumes:
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_ROOT_PASSWORD=123456
+    volumes:
+      - ../localtime:/etc/localtime
+      - ../timezone:/etc/timezone
+      - ./conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./data:/var/lib/mysql
+networks:
+  overlay:
+    name: overlay
+    external: true
