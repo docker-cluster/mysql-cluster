@@ -12,6 +12,6 @@ chmod +x setup.sh
 ## 测试
 
 ``` bash
-docker exec -it mysql-master mysql -uroot -p123456 -e "create database test1;"
+docker exec -it mysql-master mysql -uroot -p123456 -e "create database test;"
 docker exec -it mysql-slave mysql -uroot -p123456 -e "show databases;"
 ```
