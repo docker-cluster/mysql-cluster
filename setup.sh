@@ -23,7 +23,7 @@ echo "mysql-cluster connected"
 echo "start to init mysql-master"
 create_user_stmt='GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO "'$cluster_user'"@"%" IDENTIFIED BY "'$cluster_password'"; FLUSH PRIVILEGES;'
 docker exec $master_container sh -c "export MYSQL_PWD='$root_password';mysql -u root -e '$create_user_stmt'"
-docker exec $slave_container sh -c 'export MYSQL_PWD='$root_password';mysql -u root -e "show master status \G;"'
+docker exec $slave_container sh -c 'export MYSQL_PWD='$root_password';mysql -u root -e "show master status;"'
 echo "mysql-master inited"
 
 echo "start to init mysql-slave"
