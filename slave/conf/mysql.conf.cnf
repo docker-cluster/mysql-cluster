@@ -1,8 +1,8 @@
 [mysqld]
-server_id=21
+server-id=21
 log-bin=mysql-bin
-binlog_cache_size=1M
-binlog_format=mixed
-expire_logs_days=7
-relay_log=mysql-relay-bin
-read_only=1
+binlog-cache-size=1M
+binlog-format=mixed
+expire-logs-days=7
+relay-log=mysql-relay-bin
+read-only=1
