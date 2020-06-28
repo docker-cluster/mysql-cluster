@@ -12,6 +12,7 @@ services:
     environment:
       - TZ=Asia/Shanghai
       - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=demo_db
     volumes:
       - ../localtime:/etc/localtime
       - ../timezone:/etc/timezone
