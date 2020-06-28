@@ -4,7 +4,7 @@ root_password="123456"
 master_container="mysql-master"
 docker network create mysql-cluster
 docker-compose -f master/master.yml up -d
-until docker exec mysql-master sh -c 'export MYSQL_PWD='$root_password'; mysql -uroot -e ";"'
+until docker exec mysql-master sh -c 'mysql -uroot -p '$root_password' -e ";"'
   do
       echo "mysql-master loading....(will retry several times)"
       sleep 5
