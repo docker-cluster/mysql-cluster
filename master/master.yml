@@ -5,7 +5,7 @@ services:
     image: mysql:5.7
     restart: always
     networks:
-      - overlay
+      - mysql-cluster
     ports:
       - "33306:3306"
     volumes:
@@ -18,5 +18,5 @@ services:
       - ./conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
       - ./data:/var/lib/mysql
 networks:
-  overlay:
+  mysql-cluster:
     external: true
