@@ -8,14 +8,13 @@ services:
       - mysql-cluster
     ports:
       - "33306:3306"
-    volumes:
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --server-id=11 --log-bin=mysql-bin
     environment:
       - TZ=Asia/Shanghai
       - MYSQL_ROOT_PASSWORD=123456
     volumes:
       - ../localtime:/etc/localtime
       - ../timezone:/etc/timezone
-      - ./conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
       - ./data:/var/lib/mysql
 networks:
   mysql-cluster:
