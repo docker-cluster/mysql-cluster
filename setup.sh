@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 slave_user="slave"
 slave_password="123456"
@@ -12,7 +12,7 @@ until docker exec -it mysql-master mysql -uroot -p$root_password -e ";"
       sleep 5
   done
 create_user='GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO "'$mysql_user'"@"%" IDENTIFIED BY "'$mysql_password'"; FLUSH PRIVILEGES;'
-docker exec -it $master_container mysql -uroot -p$root_password -e $create_user
-docker exec -it $master_container mysql -uroot -p$root_password -e show master status;
+docker exec -it $master_container mysql -uroot -p$root_password -e "'$create_user'"
+docker exec -it $master_container mysql -uroot -p$root_password -e "show master status;"
 
 exit 0
