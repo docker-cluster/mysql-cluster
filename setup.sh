@@ -15,9 +15,16 @@ echo "***************************mysql-cluster containers inited****************
 echo "***************************start to connect mysql-cluster(will retry several times)***************************"
 until docker exec $master_container sh -c 'export MYSQL_PWD='$root_password';mysql -uroot -e ";"'
   do
-      echo "mysql-cluster connecting......"
+      echo "$master_container connecting......"
       sleep 4
   done
+echo "$master_container connected"
+until docker exec $slave_container sh -c 'export MYSQL_PWD='$root_password';mysql -uroot -e ";"'
+  do
+      echo "$slave_container connecting......"
+      sleep 4
+  done
+echo "$slave_container connected"
 echo "***************************mysql-cluster connected***************************"
 
 echo "***************************start to init mysql-master***************************"
