@@ -10,6 +10,26 @@
 
 网络：bridge
 
+目录结构：
+
+``` bash
+mysql-cluster/
+├── discard.sh
+├── docker-compose.yml
+├── localtime
+├── master
+│   └── conf
+│       ├── mysql.conf.cnf
+│       └── my(\346\263\250\351\207\212).cnf
+├── README.md
+├── setup.sh
+├── slave
+│   └── conf
+│       ├── mysql.conf.cnf
+│       └── my(\346\263\250\351\207\212).cnf
+└── timezone
+```
+
 ## 部署
 
 ``` bash
