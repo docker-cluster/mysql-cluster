@@ -9,9 +9,9 @@ services:
       - TZ=Asia/Shanghai
     ports:
       - "33306:3306"
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --server-id=11 --log-bin=mysql-bin
+    #command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --server-id=11 --log-bin=mysql-bin
     volumes:
-      - ./master/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./master/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf:ro
       - ./master/data:/var/lib/mysql
       - ./localtime:/etc/localtime
       - ./timezone:/etc/timezone
@@ -29,9 +29,9 @@ services:
       - mysql-master
     ports:
       - "33307:3306"
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --server-id=21 --log-bin=mysql-bin --relay_log=mysql-relay-bin  --read_only=1
+    #command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --server-id=21 --log-bin=mysql-bin --relay_log=mysql-relay-bin  --read_only=1
     volumes:
-      - ./slave/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./slave/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf:ro
       - ./slave/data:/var/lib/mysql
       - ./localtime:/etc/localtime
       - ./timezone:/etc/timezone

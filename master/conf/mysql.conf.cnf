@@ -4,3 +4,4 @@ log-bin=mysql-bin
 binlog_cache_size=1M
 binlog_format=mixed
 expire_logs_days=7
+lower_case_table_names=1
