@@ -7,6 +7,8 @@ master_container="mysql-master"
 slave_container="mysql-slave"
 
 echo "***************************start to init mysql-cluster containers***************************"
+chmod a+r ./master/conf/mysql.conf.cnf
+chmod a+r ./slave/conf/mysql.conf.cnf
 docker-compose down
 rm -rf ./master/data/* ./slave/data/*
 docker-compose up -d
