@@ -22,13 +22,13 @@ mysql-cluster/
 ├── master
 │   └── conf
 │       ├── mysql.conf.cnf
-│       └── my(\346\263\250\351\207\212).cnf
+│       └── my(注释).cnf
 ├── README.md
 ├── setup.sh
 ├── slave
 │   └── conf
 │       ├── mysql.conf.cnf
-│       └── my(\346\263\250\351\207\212).cnf
+│       └── my(注释).cnf
 └── timezone
 ```
 
